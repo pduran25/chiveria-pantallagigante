@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import sound from './assets/chiverito.mp3';
-import  {useState} from 'react';
+import  {useEffect, useState} from 'react';
 
 
 import './App.css'
@@ -14,8 +14,8 @@ function App() {
   console.log("mascota numero: "+codigo);
   var source = "";
   var source2 = "";
-  //const [sourcea, setSourcea] = useState("./assets/chiverito/chivp3.glb"); //codigo adicional
-  //const [source2a, setSource2a] = useState("./assets/chiverito/chivp3.usdz"); //codigo adicional
+  const [sourcea, setSourcea] = useState("./assets/chiverito/chivp3.glb"); //codigo adicional
+  const [source2a, setSource2a] = useState("./assets/chiverito/chivp3.usdz"); //codigo adicional
   var imagen = "";
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
@@ -102,7 +102,7 @@ const toggleAudio = () => {
   setIsAudioPlaying(!isAudioPlaying);
 };
 
-/*useEffect(() => {
+useEffect(() => {
   const timer = setTimeout(() => {
     // Cambiar la fuente del modelo 3D después de 30 segundos
     console.log("cambio el objeto");
@@ -111,7 +111,7 @@ const toggleAudio = () => {
   }, 10000); // 30000 milisegundos = 30 segundos
 
   return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
-}, []);*/
+}, []);
 
 const containerStyle = {
   display: 'flex',
@@ -127,7 +127,7 @@ const imageStyle = {
 
 
   return (<div className="App">
-<model-viewer src={source} ios-src={source2} camera-controls camera-orbit="-40deg 70deg 200m" camera-target="0 0 0" ar ar-modes="scene-viewer webxr quick-look" xr-environment ar-placement="wall" autoplay>
+<model-viewer src={sourcea} ios-src={source2a} camera-controls camera-orbit="-40deg 70deg 200m" camera-target="0 0 0" ar ar-modes="scene-viewer webxr quick-look" xr-environment ar-placement="wall" autoplay>
 
         <SoundButton
         src={isAudioPlaying ? './assets/audio.png' : './assets/sinaudio.png'}
