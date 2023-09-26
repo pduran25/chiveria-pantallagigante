@@ -10,21 +10,28 @@ function App() {
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const codigo = params.get('mascota');
-  var valtipo = params.get('prueba');
+  //var valtipo = params.get('prueba');
   console.log("mascota numero: "+codigo);
+  const [code, setCode] = useState(0);
   var source = "";
   var source2 = "";
   const [sourcea, setSourcea] = useState("./assets/chiverito/chivp3.glb"); //codigo adicional
   const [source2a, setSource2a] = useState("./assets/chiverito/chivp3.usdz"); //codigo adicional
-  var imagen = "";
+  //var imagen = "";
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
 
-  valtipo = (valtipo === null || valtipo === undefined)?0:valtipo;
+  //valtipo = (valtipo === null || valtipo === undefined)?0:valtipo;
   
+  if(code == 0){
+    source = "./assets/chiverito/chivp3.glb"
+    source2 = "./assets/chiverito/chivp3.usdz"
+  }
 
-
-
+if(code == 1){
+  source = "./assets/batman/batmanandroid1.glb"
+  source2 = "./assets/batman/batmanios1.usdz"
+}
   
 if(codigo == "manolo"){
   source = "./assets/chiverito/chivp3.glb"
@@ -88,9 +95,12 @@ if(codigo == "manolo"){
   source2 = "./assets/botas/botas.usdz"
 }
 
-imagen = "./assets/provisional.png"
+//imagen = "./assets/provisional.png"
+
 
 const toggleAudio = () => {
+
+
   const audioElement = document.getElementById('myAudio');
 
   if (isAudioPlaying) {
@@ -102,18 +112,38 @@ const toggleAudio = () => {
   setIsAudioPlaying(!isAudioPlaying);
 };
 
+useEffect(()=>{
+  try{
+    if(code == 1){
+      setSourcea("./assets/batman/batmanandroid1.glb"); 
+      setSource2a("./assets/batman/batmanios1.usdz"); 
+      //source = "./assets/batman/batmanandroid1.glb"
+      //source2 = "./assets/batman/batmanios1.usdz"
+    }
+   
+  } catch (error) {
+    console.error("Error en el efecto:", error);
+}
+},[code])
+
+
+
 useEffect(() => {
+  try{
   const timer = setTimeout(() => {
     // Cambiar la fuente del modelo 3D después de 30 segundos
     console.log("cambio el objeto");
-    setSourcea("./assets/batman/batmanandroid1.glb");
-    setSource2a("./assets/batman/batmanios1.usdz");
-  }, 10000); // 30000 milisegundos = 30 segundos
+    setCode(1);
+  }, 10000); // 10000 milisegundos = 10 segundos
 
   return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
+} catch (error) {
+  console.error("Error en el efecto:", error);
+}
 }, []);
 
-const containerStyle = {
+
+/*const containerStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -123,19 +153,21 @@ const containerStyle = {
 const imageStyle = {
   maxWidth: '100%',
   maxHeight: '100%',
-};
+};*/
+
+
 
 
   return (<div className="App">
-<model-viewer src={sourcea} ios-src={source2a} camera-controls camera-orbit="-40deg 70deg 200m" camera-target="0 0 0" ar ar-modes="scene-viewer webxr quick-look" xr-environment ar-placement="wall" autoplay>
+<model-viewer src={sourcea} ios-src={source2a} autoplay ar ar-modes="webxr scene-viewer" camera-controls touch-action="pan-y" camera-orbit="-40deg 70deg 200m" camera-target="0 0 0">
 
         <SoundButton
         src={isAudioPlaying ? './assets/audio.png' : './assets/sinaudio.png'}
         alt={isAudioPlaying ? 'Sonido inactivo' : 'Sonido activo'}
         onClick={toggleAudio}
-      />
+/>
 
-      <audio id="myAudio" src={sound} loop/>
+<audio id="myAudio" src={sound} loop/>
 
 
         <Boton slot="ar-button" >
