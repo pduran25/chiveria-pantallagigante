@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import sound from './assets/chiverito.mp3';
 import  {useEffect, useState} from 'react';
+import axios from 'axios';
 
 
 import './App.css'
@@ -128,7 +129,7 @@ useEffect(()=>{
 
 
 
-useEffect(() => {
+/*useEffect(() => {
   try{
   const timer = setTimeout(() => {
     // Cambiar la fuente del modelo 3D después de 30 segundos
@@ -140,7 +141,22 @@ useEffect(() => {
 } catch (error) {
   console.error("Error en el efecto:", error);
 }
-}, []);
+}, []);*/
+
+useEffect(() => {
+  console.log("cuantas veces ingresa");
+  
+    intervalo();
+  
+},[]);
+
+function intervalo(){
+  const intervalo = setInterval(() => {
+    console.log("cambio el objeto");
+    setCode(1);
+   
+ }, 30000);
+}
 
 
 /*const containerStyle = {
@@ -218,5 +234,6 @@ bottom: 100px;
   background-color: #004466;
 }
 `;
+
 
 export default App;
