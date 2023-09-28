@@ -15,8 +15,8 @@ function App() {
   var code = 0;
   var source = "";
   var source2 = "";
-  const [sourcea, setSourcea] = useState("./assets/chiverito/chivp3.glb"); //codigo adicional
-  const [source2a, setSource2a] = useState("./assets/chiverito/chivp3.usdz"); //codigo adicional
+  const [sourcea, setSourcea] = useState("./assets/chiverito/chiveritopant.glb"); //codigo adicional
+  const [source2a, setSource2a] = useState("./assets/chiverito/chiveritopant.usdz"); //codigo adicional
   //var imagen = "";
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   var contador = 0;
@@ -117,17 +117,17 @@ const toggleAudio = () => {
 useEffect(()=>{
   try{
     if(code == 0){
-      setSourcea("./assets/chiverito/chivp3.glb"); 
-      setSource2a("./assets/chiverito/chivp3.usdz");
+      setSourcea("./assets/chiverito/chiveritopant.glb"); 
+      setSource2a("./assets/chiverito/chiveritopant.usdz");
       console.log("Muestra Chiverito"); 
     } else if(code == 1){
-      setSourcea("./assets/batman/batmanandroid1.glb"); 
-      setSource2a("./assets/batman/batmanios1.usdz");
-      console.log("Muestra Batman"); 
-    } else if(code == 2){
       setSourcea("./assets/golden/goldenn6.glb"); 
       setSource2a("./assets/golden/goldenn6.usdz"); 
       console.log("Muestra Golden"); 
+    } else if(code == 2){
+      setSourcea("./assets/batman/batmanandroid1.glb"); 
+      setSource2a("./assets/batman/batmanios1.usdz");
+      console.log("Muestra Batman"); 
     } else if(code == 3){
       setSourcea("./assets/perro/perros2.glb"); 
       setSource2a("./assets/perro/perros1.usdz"); 
@@ -155,23 +155,24 @@ function intervalo(){
   const intervalo = setInterval(() => {
     contador++;
     console.log(contador);
-    if(contador == 30){
+    if(contador == 60){
       contador = 0;
     //  clearInterval(intervalo);
       if(code == 0){
         code = 1;
         console.log("registro 1");
-        setSourcea("./assets/batman/batmanandroid1.glb"); 
-      setSource2a("./assets/batman/batmanios1.usdz");
-      console.log("Muestra Batman"); 
+        setSourcea("./assets/golden/goldenpant.glb"); 
+      setSource2a("./assets/golden/goldenpant.usdz"); 
+      console.log("Muestra Golden"); 
+        
       }
          
       else if(code == 1){
         code = 2;
         console.log("registro 2");
-        setSourcea("./assets/golden/goldenn6.glb"); 
-      setSource2a("./assets/golden/goldenn6.usdz"); 
-      console.log("Muestra Golden"); 
+        setSourcea("./assets/batman/batmanandroid1.glb"); 
+      setSource2a("./assets/batman/batmanios1.usdz");
+      console.log("Muestra Batman"); 
       }
          
       else if(code == 2){
@@ -212,7 +213,7 @@ const imageStyle = {
 
 
   return (<div className="App">
-<model-viewer src={sourcea} ios-src={source2a} autoplay ar ar-modes="webxr scene-viewer" camera-controls touch-action="pan-y" camera-orbit="-40deg 70deg 200m" camera-target="0 0 0">
+<model-viewer src={sourcea} ios-src={source2a} autoplay ar ar-modes="webxr scene-viewer" camera-controls touch-action="pan-y" camera-orbit="0deg 70deg 200m" camera-target="0 0 0">
 
         <SoundButton
         src={isAudioPlaying ? './assets/audio.png' : './assets/sinaudio.png'}
