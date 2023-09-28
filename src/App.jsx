@@ -12,14 +12,15 @@ function App() {
   const params = new URLSearchParams(search);
   const codigo = params.get('mascota');
   //var valtipo = params.get('prueba');
-  console.log("mascota numero: "+codigo);
-  const [code, setCode] = useState(0);
+  var code = 0;
   var source = "";
   var source2 = "";
   const [sourcea, setSourcea] = useState("./assets/chiverito/chivp3.glb"); //codigo adicional
   const [source2a, setSource2a] = useState("./assets/chiverito/chivp3.usdz"); //codigo adicional
   //var imagen = "";
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  var contador = 0;
+  const [inicio, setInicio] = useState(0);
 
 
   //valtipo = (valtipo === null || valtipo === undefined)?0:valtipo;
@@ -115,11 +116,23 @@ const toggleAudio = () => {
 
 useEffect(()=>{
   try{
-    if(code == 1){
+    if(code == 0){
+      setSourcea("./assets/chiverito/chivp3.glb"); 
+      setSource2a("./assets/chiverito/chivp3.usdz");
+      console.log("Muestra Chiverito"); 
+    } else if(code == 1){
       setSourcea("./assets/batman/batmanandroid1.glb"); 
-      setSource2a("./assets/batman/batmanios1.usdz"); 
-      //source = "./assets/batman/batmanandroid1.glb"
-      //source2 = "./assets/batman/batmanios1.usdz"
+      setSource2a("./assets/batman/batmanios1.usdz");
+      console.log("Muestra Batman"); 
+    } else if(code == 2){
+      setSourcea("./assets/golden/goldenn6.glb"); 
+      setSource2a("./assets/golden/goldenn6.usdz"); 
+      console.log("Muestra Golden"); 
+    } else if(code == 3){
+      setSourcea("./assets/perro/perros2.glb"); 
+      setSource2a("./assets/perro/perros1.usdz"); 
+      console.log("Muestra Perros"); 
+
     }
    
   } catch (error) {
@@ -129,33 +142,57 @@ useEffect(()=>{
 
 
 
-/*useEffect(() => {
-  try{
-  const timer = setTimeout(() => {
-    // Cambiar la fuente del modelo 3D después de 30 segundos
-    console.log("cambio el objeto");
-    setCode(1);
-  }, 10000); // 10000 milisegundos = 10 segundos
-
-  return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
-} catch (error) {
-  console.error("Error en el efecto:", error);
-}
-}, []);*/
 
 useEffect(() => {
   console.log("cuantas veces ingresa");
-  
+  if(inicio == 0){
     intervalo();
-  
-},[]);
+    setInicio(1);
+  }
+},[inicio]);
 
 function intervalo(){
   const intervalo = setInterval(() => {
-    console.log("cambio el objeto");
-    setCode(1);
+    contador++;
+    console.log(contador);
+    if(contador == 30){
+      contador = 0;
+    //  clearInterval(intervalo);
+      if(code == 0){
+        code = 1;
+        console.log("registro 1");
+        setSourcea("./assets/batman/batmanandroid1.glb"); 
+      setSource2a("./assets/batman/batmanios1.usdz");
+      console.log("Muestra Batman"); 
+      }
+         
+      else if(code == 1){
+        code = 2;
+        console.log("registro 2");
+        setSourcea("./assets/golden/goldenn6.glb"); 
+      setSource2a("./assets/golden/goldenn6.usdz"); 
+      console.log("Muestra Golden"); 
+      }
+         
+      else if(code == 2){
+        code = 3;
+        console.log("registro 3");
+        setSourcea("./assets/perro/perros2.glb"); 
+      setSource2a("./assets/perro/perros1.usdz"); 
+      console.log("Muestra Perros"); 
+      }
+          
+      else if(code == 3){
+        code = 0;
+        console.log("registro 3");
+        setSourcea("./assets/chiverito/chivp3.glb"); 
+      setSource2a("./assets/chiverito/chivp3.usdz");
+      console.log("Muestra Chiverito"); 
+      }
+         
+    }
    
- }, 30000);
+ }, 1000);
 }
 
 
