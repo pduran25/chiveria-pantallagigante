@@ -170,24 +170,25 @@ function intervalo(){
       else if(code == 1){
         code = 2;
         console.log("registro 2");
-        setSourcea("./assets/batman/batmanandroid1.glb"); 
-      setSource2a("./assets/batman/batmanios1.usdz");
-      console.log("Muestra Batman"); 
+        setSourcea("./assets/perro/perros.glb"); 
+      setSource2a("./assets/perro/perros.usdz"); 
+      console.log("Muestra Perros"); 
       }
          
       else if(code == 2){
         code = 3;
         console.log("registro 3");
-        setSourcea("./assets/perro/perros2.glb"); 
-      setSource2a("./assets/perro/perros1.usdz"); 
-      console.log("Muestra Perros"); 
+        
+      setSourcea("./assets/batman/batmanandroid1.glb"); 
+      setSource2a("./assets/batman/batmanios1.usdz");
+      console.log("Muestra Batman"); 
       }
           
       else if(code == 3){
         code = 0;
         console.log("registro 3");
-        setSourcea("./assets/chiverito/chivp3.glb"); 
-      setSource2a("./assets/chiverito/chivp3.usdz");
+        setSourcea("./assets/chiverito/chiveritopant.glb"); 
+      setSource2a("./assets/chiverito/chiveritopant.usdz");
       console.log("Muestra Chiverito"); 
       }
          
