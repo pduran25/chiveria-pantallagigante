@@ -179,8 +179,8 @@ function intervalo(){
         code = 3;
         console.log("registro 3");
         
-      setSourcea("./assets/batman/batmanandroid1.glb"); 
-      setSource2a("./assets/batman/batmanios1.usdz");
+      setSourcea("./assets/gato/gatopant.glb"); 
+      setSource2a("./assets/gato/gatopant.usdz");
       console.log("Muestra Batman"); 
       }
           
