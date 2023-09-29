@@ -144,12 +144,13 @@ useEffect(()=>{
 
 
 useEffect(() => {
-  console.log("cuantas veces ingresa");
+  console.log("cuantas veces ingresa 1");
   if(inicio == 0){
     intervalo();
     setInicio(1);
   }
 },[inicio]);
+
 
 function intervalo(){
   const intervalo = setInterval(() => {
