@@ -170,8 +170,8 @@ function intervalo(){
       else if(code == 1){
         code = 2;
         console.log("registro 2");
-        setSourcea("./assets/perro/perros.glb"); 
-      setSource2a("./assets/perro/perros.usdz"); 
+        setSourcea("./assets/perro/perrospant.glb"); 
+      setSource2a("./assets/perro/perrospant.usdz"); 
       console.log("Muestra Perros"); 
       }
          
