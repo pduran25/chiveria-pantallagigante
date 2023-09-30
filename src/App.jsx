@@ -11,6 +11,7 @@ function App() {
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const codigo = params.get('mascota');
+  console.log("mascota numero: "+codigo);
   //var valtipo = params.get('prueba');
   var code = 0;
   var source = "";
@@ -25,15 +26,17 @@ function App() {
 
   //valtipo = (valtipo === null || valtipo === undefined)?0:valtipo;
   
-  if(code == 0){
-    source = "./assets/chiverito/chivp3.glb"
-    source2 = "./assets/chiverito/chivp3.usdz"
+  if(codigo != null){
+    if(codigo == 'num1'){
+      code = 3;
+    }else if(codigo == 'num2'){
+      code = 0;
+    }else if(codigo == 'num3'){
+      code = 2;
+    }
+    contador = 59;
   }
-
-if(code == 1){
-  source = "./assets/batman/batmanandroid1.glb"
-  source2 = "./assets/batman/batmanios1.usdz"
-}
+  
   
 if(codigo == "manolo"){
   source = "./assets/chiverito/chivp3.glb"
@@ -114,6 +117,7 @@ const toggleAudio = () => {
   setIsAudioPlaying(!isAudioPlaying);
 };
 
+/*
 useEffect(()=>{
   try{
     if(code == 0){
@@ -138,7 +142,7 @@ useEffect(()=>{
   } catch (error) {
     console.error("Error en el efecto:", error);
 }
-},[code])
+},[code])*/
 
 
 
