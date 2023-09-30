@@ -219,7 +219,7 @@ const imageStyle = {
 
 
   return (<div className="App">
-<model-viewer src={sourcea} ios-src={source2a} autoplay ar ar-modes="webxr scene-viewer" camera-controls touch-action="pan-y" camera-orbit="0deg 70deg 200m" camera-target="0 0 0">
+<model-viewer src={sourcea} ios-src={source2a} autoplay ar ar-modes="webxr scene-viewer quick-look" camera-controls touch-action="pan-y" camera-orbit="0deg 70deg 200m" camera-target="0 0 0" ar-placement="floor">
 
         <SoundButton
         src={isAudioPlaying ? './assets/audio.png' : './assets/sinaudio.png'}
